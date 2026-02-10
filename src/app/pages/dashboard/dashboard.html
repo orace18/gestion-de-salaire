@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+
+<div class="dashboard-container">
+    <div class="dashboard-content">
+        <div class="hero-section">
+            <h1 class="hero-title">Tableau de Bord</h1>
+            <p class="hero-subtitle">Gérez votre budget intelligemment avec l'assistance de l'IA</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Left Column -->
+            <div class="left-column">
+                <app-salary-input [salary]="salary" (salaryChange)="onSalaryChange($event)">
+                </app-salary-input>
+
+                <app-expense-list [expenses]="expenses" (addExpense)="onAddExpense($event)"
+                    (removeExpense)="onRemoveExpense($event)">
+                </app-expense-list>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <app-recommendation-card [recommendation]="recommendation" [loading]="loadingRecommendation">
+                </app-recommendation-card>
+            </div>
+        </div>
+    </div>
+</div>
