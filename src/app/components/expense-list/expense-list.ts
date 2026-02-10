@@ -10,7 +10,7 @@ import { Expense, ExpenseCategory } from '../../models/budget.model';
   styleUrl: './expense-list.scss'
 })
 export class ExpenseListComponent {
-  @Input() expenses: Expense[] = [];
+  @Input() expenses: (Expense & { isPending?: boolean })[] = [];
   @Output() addExpense = new EventEmitter<{ category: ExpenseCategory, amount: number, description: string }>();
   @Output() removeExpense = new EventEmitter<string>();
 
@@ -26,12 +26,13 @@ export class ExpenseListComponent {
         amount: this.amount,
         description: this.description
       });
-
-      // Reset form
-      this.amount = 0;
-      this.description = '';
-      this.selectedCategory = ExpenseCategory.OTHER;
     }
+  }
+
+  resetForm() {
+    this.amount = 0;
+    this.description = '';
+    this.selectedCategory = ExpenseCategory.OTHER;
   }
 
   onRemoveExpense(id: string) {

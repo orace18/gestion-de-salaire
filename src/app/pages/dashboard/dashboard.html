@@ -10,18 +10,58 @@
         <div class="dashboard-grid">
             <!-- Left Column -->
             <div class="left-column">
-                <app-salary-input [salary]="salary" (salaryChange)="onSalaryChange($event)">
+                <app-salary-input [salary]="salary" (salaryChange)="onSalaryInput($event)">
                 </app-salary-input>
 
-                <app-expense-list [expenses]="expenses" (addExpense)="onAddExpense($event)"
+                <app-expense-list [expenses]="displayExpenses()" (addExpense)="onAddExpense($event)"
                     (removeExpense)="onRemoveExpense($event)">
                 </app-expense-list>
+
+                @if (saveError()) {
+                <p class="save-error">{{ saveError() }}</p>
+                }
+
+                <button class="save-all-btn" (click)="onSaveAll()" [disabled]="saveInProgress()">
+                    @if (saveInProgress()) {
+                    <span>Enregistrement...</span>
+                    } @else {
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+                    </svg>
+                    <span>Enregistrer salaire, dépenses et recommandations</span>
+                    }
+                </button>
             </div>
 
             <!-- Right Column -->
             <div class="right-column">
-                <app-recommendation-card [recommendation]="recommendation" [loading]="loadingRecommendation">
+                <app-recommendation-card [recommendation]="recommendation()" [loading]="loadingRecommendation()">
                 </app-recommendation-card>
+
+                <div class="operations-card">
+                    <h2 class="operations-title">Historique des opérations</h2>
+                    @if (operations().length === 0) {
+                    <p class="operations-empty">Aucune opération enregistrée</p>
+                    } @else {
+                    <div class="operations-list">
+                        @for (op of operations(); track op.id) {
+                        <div class="operation-item">
+                            <div class="operation-date">{{ op.timestamp | date:'dd/MM/yyyy HH:mm' }}</div>
+                            <div class="operation-details">
+                                Salaire: {{ op.salary | number:'1.0-0' }} XOF
+                                @if (op.expensesCount > 0) {
+                                · {{ op.expensesCount }} dépense(s) · Total: {{ op.totalExpenses | number:'1.0-0' }} XOF
+                                }
+                            </div>
+                            @if (op.details) {
+                            <div class="operation-full-details">{{ op.details }}</div>
+                            }
+                        </div>
+                        }
+                    </div>
+                    }
+                </div>
             </div>
         </div>
     </div>

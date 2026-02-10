@@ -35,3 +35,12 @@ export interface AiRecommendation {
     personalPercentage: number;
     advice: string;
 }
+
+export interface Operation {
+    id: string;
+    timestamp: Date;
+    salary: number;
+    expensesCount: number;
+    totalExpenses: number;
+    details: string;
+}
