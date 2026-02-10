@@ -1,59 +1,130 @@
-# SalaryManager
+# 💰 Salary Manager
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.3.
+Application Angular moderne de gestion de salaire avec intelligence artificielle, authentification Google et design premium.
 
-## Development server
+![Angular](https://img.shields.io/badge/Angular-19-DD0031?logo=angular)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)
+![Firebase](https://img.shields.io/badge/Firebase-Auth-FFCA28?logo=firebase)
+![Claude AI](https://img.shields.io/badge/Claude-API-6B4FBB)
 
-To start a local development server, run:
+## ✨ Fonctionnalités
+
+- 🔐 **Authentification Google** via Firebase
+- 💵 **Gestion du salaire** avec saisie et persistence
+- 📊 **Suivi des dépenses** par catégories (10 catégories disponibles)
+- 🤖 **Recommandations IA** personnalisées via Claude API
+- 💾 **Persistence locale** avec localStorage
+- 🎨 **Design premium** : glassmorphism, gradients, animations
+- 📱 **Responsive** : mobile et desktop
+
+## 🎯 Catégories de dépenses
+
+- Logement
+- Transport
+- Alimentation
+- Ravitaillement
+- Dîme
+- Habillement
+- Santé
+- Factures
+- Abonnements
+- Autre
+
+## 🚀 Installation rapide
+
+### Prérequis
+
+- Node.js 20+ et npm
+- Compte Firebase (gratuit)
+- Clé API Claude/Anthropic (optionnel)
+
+### Étapes
+
+1. **Cloner le dépôt**
+   ```bash
+   git clone https://github.com/orace18/gestion-de-salaire.git
+   cd gestion-de-salaire
+   ```
+
+2. **Installer les dépendances**
+   ```bash
+   npm install
+   ```
+
+3. **Configurer l'environnement**
+   ```bash
+   cp src/environments/environment.example.ts src/environments/environment.ts
+   ```
+   Puis éditez `src/environments/environment.ts` avec vos propres clés (voir [SETUP.md](./SETUP.md))
+
+4. **Lancer l'application**
+   ```bash
+   npm start
+   ```
+   Ouvrez http://localhost:4200/
+
+## 📖 Configuration détaillée
+
+Consultez [SETUP.md](./SETUP.md) pour les instructions complètes de configuration de :
+- Firebase Authentication
+- Claude API
+- Deployment en production
+
+## 🎨 Aperçu
+
+### Page de connexion
+Design glassmorphism avec dégradés animés et authentification Google sécurisée.
+
+### Dashboard
+Interface intuitive pour gérer votre budget avec recommandations IA en temps réel.
+
+## 🧠 Recommandations IA
+
+L'application utilise **Claude API (Anthropic)** pour analyser votre profil financier et suggérer une répartition optimale entre :
+- **Épargne** : pour vos objectifs long terme
+- **Imprévus** : fonds d'urgence
+- **Plaisir** : dépenses personnelles
+
+Si l'API n'est pas configurée, un algorithme de fallback (règle 50/30/20) est automatiquement utilisé.
+
+## 🛠️ Technologies
+
+- **Frontend** : Angular 19 (standalone components)
+- **Auth** : Firebase Authentication
+- **IA** : Claude API (Anthropic)
+- **Styling** : SCSS, Glassmorphism, Google Fonts (Inter)
+- **State** : Services Angular + RxJS
+- **Storage** : localStorage
+
+## 📦 Scripts disponibles
 
 ```bash
-ng serve
+npm start          # Serveur de développement (port 4200)
+npm run build      # Build de production
+npm run watch      # Build en mode watch
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🔒 Sécurité
 
-## Code scaffolding
+⚠️ **Important** : Ne committez jamais vos clés API dans Git !
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- `environment.ts` est dans `.gitignore`
+- Utilisez `environment.example.ts` comme template
+- En production, utilisez des variables d'environnement sécurisées
 
-```bash
-ng generate component component-name
-```
+## 📝 License
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+MIT
 
-```bash
-ng generate --help
-```
+## 👤 Auteur
 
-## Building
+**orace18**
+- GitHub: [@orace18](https://github.com/orace18)
 
-To build the project run:
+## 🤝 Contribution
 
-```bash
-ng build
-```
+Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou une pull request.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+⭐ Si ce projet vous aide, donnez-lui une étoile !
